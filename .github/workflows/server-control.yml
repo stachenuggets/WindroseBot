@@ -1,0 +1,33 @@
+name: Server Control
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Server action"
+        required: true
+        type: choice
+        options:
+          - start
+          - stop
+          - restart
+
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run server ${{ inputs.action }}
+        env:
+          NITRADO_TOKEN: ${{ secrets.NITRADO_TOKEN }}
+          NITRADO_SERVICE_ID: ${{ secrets.NITRADO_SERVICE_ID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python server_control.py ${{ inputs.action }}
