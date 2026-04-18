@@ -13,6 +13,7 @@ A Discord bot for monitoring and managing a Windrose Nitrado gameserver. Hosted 
 - `/backup restore` — Restore from a backup (admin only)
 - `/logs` — Pull recent server logs (admin only)
 - `/players` — Check player count
+- `/save` — Save the server (creates a backup)
 - **Auto-monitoring** — Updates a status embed every 5 minutes and alerts on status changes
 - **Restart warnings** — Posts a 5-minute warning before the daily scheduled restart
 
