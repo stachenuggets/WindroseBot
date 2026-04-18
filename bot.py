@@ -232,7 +232,7 @@ async def cmd_status(interaction: discord.Interaction):
 async def cmd_start(interaction: discord.Interaction):
     await interaction.response.defer()
     try:
-        msg = server_action("start")
+        msg = server_action("restart")
         embed = discord.Embed(title="Server Start", description=msg, color=0x2ECC71)
         await interaction.followup.send(embed=embed)
     except requests.HTTPError as e:
