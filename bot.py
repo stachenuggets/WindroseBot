@@ -282,6 +282,22 @@ async def cmd_players(interaction: discord.Interaction):
         await interaction.followup.send(f"Nitrado API error: {e.response.status_code}")
 
 
+@tree.command(name="save", description="Save the server (creates a backup)")
+@app_commands.default_permissions(administrator=True)
+async def cmd_save(interaction: discord.Interaction):
+    await interaction.response.defer()
+    try:
+        msg = create_backup()
+        embed = discord.Embed(
+            title="\U0001f4be Server Saved",
+            description=msg,
+            color=0x2ECC71,
+        )
+        await interaction.followup.send(embed=embed)
+    except requests.HTTPError as e:
+        await interaction.followup.send(f"Save failed: {e.response.status_code}")
+
+
 @tree.command(name="ip", description="Get the server address")
 async def cmd_ip(interaction: discord.Interaction):
     await interaction.response.defer()
