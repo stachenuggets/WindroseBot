@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh:*)",
+      "Bash(scp -i \"C:\\\\Users\\\\salva\\\\.ssh\\\\oracle-vm.key\" /c/Users/salva/source/WindroseBot/bot.py ubuntu@150.136.122.15:~)"
+    ]
+  }
+}
